@@ -124,7 +124,8 @@ module SpreeAvataxCertified
     private
 
     def discounted?(line_item)
-      line_item.adjustments.promotion.eligible.any? || order.adjustments.promotion.eligible.any?
+      line_item.adjustments.promotion.eligible.any? || order.adjustments.promotion.eligible.any? \
+        || line_item.adjustments.shipping_contribution.any?
     end
 
     def tax_included_in_price?(item)

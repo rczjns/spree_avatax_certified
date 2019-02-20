@@ -19,6 +19,9 @@ module Spree
       return prev_tax_amount unless calculable.zone.include?(item_address)
 
       avalara_response = get_avalara_response(order)
+      p 'wwwwwwwwwwwwwwwwwwww'
+      p avalara_response
+      p 'wwwwwwwwwwwwwwwwwwww'
       tax_for_item(item, avalara_response)
     end
 
@@ -54,7 +57,7 @@ module Spree
       order.shipments.each do |shipment|
         key << shipment.avatax_cache_key
       end
-      order.all_adjustments.not_tax do |adj|
+      order.all_adjustments.non_tax do |adj|
         key << adj.avatax_cache_key
       end
       key

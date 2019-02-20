@@ -3,7 +3,7 @@ class SpreeAvataxCertified::Request::GetTax < SpreeAvataxCertified::Request::Bas
     @request = {
       DocCode: order.number,
       DocDate: doc_date,
-      Discount: order.all_adjustments.promotion.eligible.sum(:amount).abs.to_s,
+      Discount: order.all_adjustments.non_tax.eligible.sum(:amount).abs.to_s,
       Commit: @commit,
       DocType: @doc_type ? @doc_type : 'SalesOrder',
       Addresses: address_lines,
